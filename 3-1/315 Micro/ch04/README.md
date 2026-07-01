@@ -176,6 +176,7 @@ MSG DB 'HELLO', 0AH, 0DH, '$'
 ```
 This is a string followed by a line feed, carriage return, and dollar sign.
 
+[See Details](a.md)
 ---
 
 ## 4.3 Variables
@@ -269,6 +270,8 @@ WORD1    DW    1234H
 - High byte (12h) → at address `WORD1+1`
 
 This is because the 8086 stores the **low byte first** (little-endian).
+
+[See Details](b.md)
 
 ### Character Strings
 
