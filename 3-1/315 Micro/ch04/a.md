@@ -47,19 +47,22 @@ actually becomes
 This is a hexadecimal number.
 
 ```
-0Ah = Line Feed (LF)
+0Ah = 10d in ASCII table = Line Feed (LF)
 ```
 
-Line Feed moves the cursor **down one line**.
+Line Feed moves the cursor **down one line**. 
+[More Details](c.md)
 
 Think of pressing **Enter**, but only moving **down**, not to the beginning of the line.
+---
+![ASCII Chart](ASCII.png)
 
 ---
 
 ### `0DH`
 
 ```
-0Dh = Carriage Return (CR)
+0Dh = 13d in ASCII = Carriage Return (CR)
 ```
 
 This moves the cursor back to the **start of the current line**.

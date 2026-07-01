@@ -170,13 +170,12 @@ Enclosed in single or double quotes. The assembler converts them to their ASCII 
 
 Inside a string, case matters — `'abc'` is different from `'ABC'`.
 
-You can mix characters and numbers in one definition:
+You can mix characters and numbers in one definition: [See Details](a.md)
 ```asm
 MSG DB 'HELLO', 0AH, 0DH, '$'
 ```
 This is a string followed by a line feed, carriage return, and dollar sign.
 
-[See Details](a.md)
 ---
 
 ## 4.3 Variables
@@ -484,7 +483,7 @@ You declare the program's size with `.MODEL`:
 | HUGE | multiple segments | multiple segments (arrays can exceed 64 KB) |
 
 For almost everything you'll write: **use SMALL**. `.MODEL` must come before any segment declaration.
-
+[See details](d.md)
 ---
 
 ## 4.7.2 Data Segment

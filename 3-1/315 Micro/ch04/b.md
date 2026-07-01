@@ -9,7 +9,7 @@ WORD1    DW    1234H
 
 This is because the 8086 stores the low byte first (little-endian). 
 ---
-why? why not at single address as word is of 2 byte =16bits. isnt 16 bit enpugh to store 1234h in binary?
+why? why not at a single address as word is of 2 byte =16bits. isn't 16 bit enough to store 1234h in binary?
 ---
 ---
 Excellent question, Riyad. This is one of the biggest conceptual hurdles when learning computer architecture.
