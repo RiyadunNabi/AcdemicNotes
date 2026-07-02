@@ -208,6 +208,14 @@ Not every instruction touches every flag. Here's the reference table for instruc
 1 FFFEh   → stored result in AX = FFFEh
 ```
 
+Binary version:
+```
+1111 1111 1111 1111
++1111 1111 1111 1111
+--------------------
+1 1111 1111 1111 1110
+```
+
 - **SF = 1** — msb of FFFEh (`1111 1111 1111 1110`) is 1 → looks negative
 - **PF = 0** — low byte `1111 1110` has 7 ones → odd count
 - **ZF = 0** — result isn't zero
@@ -221,6 +229,14 @@ Not every instruction touches every flag. Here's the reference table for instruc
 + 80h
 ------
 1 00h   → stored result in AL = 00h
+```
+
+Binary version:
+```
+1000 0000
++1000 0000
+---------
+1 0000 0000
 ```
 
 - **SF = 0** — result 00h, msb is 0
@@ -238,6 +254,14 @@ Not every instruction touches every flag. Here's the reference table for instruc
   7FFFh
 ```
 
+Binary version:
+```
+1000 0000 0000 0000
+-0000 0000 0000 0001
+--------------------
+0111 1111 1111 1111
+```
+
 - **SF = 0** — msb of 7FFFh is 0
 - **PF = 1** — 8 ones in low byte (even)
 - **ZF = 0** — nonzero
@@ -253,6 +277,14 @@ Not every instruction touches every flag. Here's the reference table for instruc
 1 00h  → stored result in AL = 00h
 ```
 
+Binary version:
+```
+1111 1111
++0000 0001
+----------
+1 0000 0000
+```
+
 - **SF = 0, PF = 1, ZF = 1**
 - **CF is unaffected by INC** — stays whatever it was before (if it was 0 before, it's still 0 — even though there technically WAS a carry out!) This is the special INC/DEC exception.
 - **OF = 0** — we added FFh (−1 signed) and 1h (+1 signed), which are **different signs** → signed overflow is impossible by the rule above
@@ -261,12 +293,23 @@ Not every instruction touches every flag. Here's the reference table for instruc
 
 Result stored: FFFBh (which is −5 in two's complement). **No flags change at all** — MOV never touches flags.
 
+Binary version: `1111 1111 1111 1011` (FFFBh). No arithmetic is performed, so there is no add/subtract step to show.
+
 **Example 5.6 — NEG AX** where AX = 8000h
 
 ```
 8000h = 1000 0000 0000 0000
 one's complement (flip all bits) = 0111 1111 1111 1111
 add 1 → 1000 0000 0000 0000 = 8000h
+```
+
+Binary version:
+```
+1000 0000 0000 0000
+one's complement → 0111 1111 1111 1111
++0000 0000 0000 0001
+--------------------
+1000 0000 0000 0000
 ```
 
 Interesting — negating 8000h gives you **8000h again**! This is a special quirk: 8000h (as signed, −32768) has no positive counterpart in two's complement range (the range is −32768 to +32767 — there's no +32768 to flip to). So it "wraps around" to itself.
